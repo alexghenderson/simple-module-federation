@@ -1,0 +1,34 @@
+{
+  "name": "remote",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    "./Test": {
+      "import": "./src/Test.js",
+      "require": "./src/Test.umd.cjs"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "simple-module-federation": "file:../simple-module-federation",
+    "shared": "file:../shared"
+  },
+  "devDependencies": {
+    "@tsconfig/vite-react": "^3.0.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "vite": "^5.2.11"
+  }
+}
