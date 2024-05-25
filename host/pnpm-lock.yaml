@@ -9,14 +9,17 @@ importers:
   .:
     dependencies:
       react:
-        specifier: ^18.3.1
+        specifier: ^18
         version: 18.3.1
       react-dom:
-        specifier: ^18.3.1
+        specifier: ^18
         version: 18.3.1(react@18.3.1)
       react-router-dom:
         specifier: ^6.23.1
         version: 6.23.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      shared:
+        specifier: file:../shared
+        version: file:../shared(react@18.3.1)
       vite:
         specifier: ^5.2.11
         version: 5.2.11
@@ -633,6 +636,11 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
+  shared@file:../shared:
+    resolution: {directory: ../shared, type: directory}
+    peerDependencies:
+      react: ^18
+
   simple-module-federation@file:../simple-module-federation:
     resolution: {directory: ../simple-module-federation, type: directory}
     peerDependencies:
@@ -1244,6 +1252,10 @@ snapshots:
       loose-envify: 1.4.0
 
   semver@6.3.1: {}
+
+  shared@file:../shared(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   simple-module-federation@file:../simple-module-federation(vite@5.2.11):
     dependencies:

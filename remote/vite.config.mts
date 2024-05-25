@@ -23,6 +23,7 @@ export default defineConfig({
         simpleFederationRemotePlugin({
           sharedDependencies: [
             "react",
+            "react-dom",
             "react/jsx-runtime",
             "react-router-dom",
           ],

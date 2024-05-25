@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      shared:
+        specifier: file:../shared
+        version: file:../shared(react@18.3.1)
       simple-module-federation:
         specifier: file:../simple-module-federation
         version: file:../simple-module-federation(vite@5.2.11)
@@ -22,10 +25,10 @@ importers:
         specifier: ^18.3.0
         version: 18.3.0
       react:
-        specifier: ^18.3.1
+        specifier: ^18
         version: 18.3.1
       react-dom:
-        specifier: ^18.3.1
+        specifier: ^18
         version: 18.3.1(react@18.3.1)
       react-router-dom:
         specifier: ^6.23.1
@@ -335,6 +338,11 @@ packages:
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
 
+  shared@file:../shared:
+    resolution: {directory: ../shared, type: directory}
+    peerDependencies:
+      react: ^18
+
   simple-module-federation@file:../simple-module-federation:
     resolution: {directory: ../simple-module-federation, type: directory}
     peerDependencies:
@@ -602,6 +610,10 @@ snapshots:
   scheduler@0.23.2:
     dependencies:
       loose-envify: 1.4.0
+
+  shared@file:../shared(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   simple-module-federation@file:../simple-module-federation(vite@5.2.11):
     dependencies:

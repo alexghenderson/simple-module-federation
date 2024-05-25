@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "exports": {
-    "./Test": {
-      "import": "./src/Test.js",
-      "require": "./src/Test.umd.cjs"
-    }
+    "./Test": "./dist/Test.es.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,6 +15,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
+  },
   "dependencies": {
     "simple-module-federation": "file:../simple-module-federation",
     "shared": "file:../shared"
@@ -26,8 +27,8 @@
     "@tsconfig/vite-react": "^3.0.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^18",
+    "react-dom": "^18",
     "react-router-dom": "^6.23.1",
     "vite": "^5.2.11"
   }

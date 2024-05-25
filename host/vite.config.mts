@@ -9,7 +9,7 @@ export default defineConfig({
     simpleFederationHostPlugin({
       sharedModules: {
         react: "default",
-        // "react-dom": "default",
+        "react-dom": "default",
         "react/jsx-runtime": "*",
         "react-router-dom": ["Link"],
       },
@@ -26,7 +26,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
+          react: ["react", "react/jsx-runtime", "react-dom"],
           vendor: ["react-router-dom"],
         },
       },
