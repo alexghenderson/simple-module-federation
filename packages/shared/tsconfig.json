@@ -8,5 +8,5 @@
       "src/*": ["src/*"]
     }
   },
-  "include": ["rollup.config.js", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["rollup.config.cjs", "src/**/*.ts", "src/**/*.tsx"]
 }

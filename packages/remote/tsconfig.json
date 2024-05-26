@@ -8,5 +8,5 @@
       "src/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.mts"]
 }
