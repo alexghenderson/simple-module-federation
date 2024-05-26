@@ -10,7 +10,7 @@ const inputs = Object.keys(pkg.exports).reduce((prev, key) => {
   prev[key.replace("./", "")] = resolve(__dirname, out);
   return prev;
 }, {});
-console.log(inputs);
+
 module.exports = defineConfig({
   plugins: [typescript()],
   input: inputs,

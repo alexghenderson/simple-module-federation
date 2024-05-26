@@ -1,5 +1,17 @@
 import { defineConfig } from "vite";
+import typescript from "rollup-plugin-typescript2";
+import dts from "vite-plugin-dts";
 import { simpleFederationRemotePlugin } from "simple-module-federation";
+import pkg from "./package.json";
+import { resolve } from "path";
+
+const inputs = Object.keys(pkg.exports).reduce((prev, key) => {
+  const out = pkg.exports[key]
+    .replace(".js", ".tsx")
+    .replace("./dist", "./src");
+  prev[key.replace("./", "")] = resolve(__dirname, out);
+  return prev;
+}, {});
 
 const externals = [
   "react",
@@ -10,7 +22,7 @@ const externals = [
 ];
 
 export default defineConfig({
-  plugins: [],
+  plugins: [dts()],
   server: {
     port: 5001,
   },
@@ -22,7 +34,7 @@ export default defineConfig({
       entry: { Test: "src/Test.tsx" },
       name: "Remote",
       formats: ["es"],
-      fileName: (format) => `Test.${format}.js`,
+      fileName: (format, alias) => `${alias}.js`,
     },
     minify: true,
     sourcemap: true,
@@ -32,6 +44,13 @@ export default defineConfig({
           sharedDependencies: externals,
         }),
       ],
+      input: inputs,
+      output: {
+        format: "es",
+        exports: "named",
+        dir: "dist",
+        entryFileNames: "[name].js",
+      },
       external: externals,
     },
   },

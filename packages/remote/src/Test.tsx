@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useConfig } from "shared/config";
 
@@ -14,3 +13,5 @@ export default function Test() {
     </div>
   );
 }
+
+Test.displayName = "Test";

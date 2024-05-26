@@ -4,7 +4,10 @@ import { ConfigProvider } from "shared/config";
 import { config } from "./config";
 
 const Test = React.lazy(
-  () => import(/* @vite-ignore */ `${config.remoteModules}/Test.es.js`),
+  () =>
+    import(/* @vite-ignore */ `${config.remoteModules}/Test.js`) as Promise<
+      typeof import("remote/Test")
+    >,
 );
 
 interface Config {

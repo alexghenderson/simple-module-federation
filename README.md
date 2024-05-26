@@ -20,7 +20,7 @@ The remote plug works by accepted a list of shared dependencies, and remapping t
 
 This plugin currently generates code that utilizes ES modules which can be loaded via built-in dynamic `import` statements. This imposes some limitations:
 
-- Type information is not automatically included in remote modules. It is likely possible to get types working with these modules, but it would require some work. Due to this, imported modules are effectively typed as `any`.
+- Type information is not automatically included in remote modules. In order to get this working, you must export the type definitions of the remote modules, add the remote modules as a dev dependency, and cast the dynamic imports as the imported type. This does _not_ bundle the remote into the main bundle if done correctly, but at the same time it doesn't guarantee type correctness due to potentially mismatched type definitions, as the types bundled in with the dependency may not be the same module (e.g. version mismatch) as the dynamically imported module.
 - It is not possible for the host to directly share code with remotes. This can be worked around by moving shared code into a dependency, and adding it to the shared module configuration in the host and remote plugin configuration. This in action is included in the example project (the `shared/config` module).
 - This relies entirely on native ES modules, which may not be supported by all browsers. It has been tested on chrome-based browsers, and likely will work in other browsers (anything from 2018 on according to caniuse).
 - This implementation lacks many features that are included in the larger module-federation packages.
@@ -40,3 +40,12 @@ The simplicity of these plugins means it is very easy to set up, and the configu
 This repository includes an example project. This sample projects includes a host application, a remote module, and a shared module.
 
 The host application is a simple React application using react-router-dom. It exposes a shared configuration object (using the `shared` package in this repository), along with several dependencies, to the remote module. The remote module is a react component that reads the shared configuration object. It includes code splitting alongside the code sharing, moving all dependencies into either the `react` bundle or the `vendor` bundle. This is a rather abitrary distinction, and serves as more of an example than anything.
+
+It can be run with `pnpm run:all`, which will start the `dev` process for each package:
+
+- For the host package, it runs the vite dev server on port 3000.
+- For the shared package, it runs `rollup build --watch` to automatically rebuild on change.
+- For the remote package, it runs `vite build --watch & vite preview` to automatically rebuild on change, and to expose the remote module on port 5001.
+- For the simple-module-federation plugin package, it runs `rollup build --watch` to automatically rebuild on change.
+
+The packages are linked via pnpm workspaces. This repository requires pnpm.

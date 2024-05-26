@@ -26,6 +26,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
     "rollup-plugin-visualizer": "^5.12.0",
-    "simple-module-federation": "workspace:*"
+    "simple-module-federation": "workspace:*",
+    "remote": "workspace:*"
   }
 }
