@@ -11,6 +11,7 @@
   },
   "type": "module",
   "scripts": {
+    "dev": "rollup --config rollup.config.cjs --watch",
     "build": "rollup --config rollup.config.cjs ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

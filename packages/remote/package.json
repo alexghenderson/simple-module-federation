@@ -1,14 +1,14 @@
 {
-  "name": "shared",
+  "name": "remote",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "exports": {
-    "./config": "./dist/config.es.js"
+    "./Test": "./dist/Test.es.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite build --watch",
+    "dev": "vite build && vite build --watch & vite preview",
     "preview": "vite preview",
     "build": "vite build"
   },
@@ -16,9 +16,13 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^18"
+    "react": "^18",
+    "react-dom": "^18"
   },
-  "dependencies": {},
+  "dependencies": {
+    "simple-module-federation": "workspace:*",
+    "shared": "workspace:*"
+  },
   "devDependencies": {
     "@tsconfig/vite-react": "^3.0.2",
     "@types/react": "^18.3.3",

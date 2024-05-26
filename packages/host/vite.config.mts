@@ -12,6 +12,7 @@ export default defineConfig({
         "react-dom": "default",
         "react/jsx-runtime": "*",
         "react-router-dom": ["Link"],
+        "shared/config": ["useConfig"],
       },
     }),
     visualizer({ open: true }),

@@ -1,6 +1,14 @@
 import { defineConfig } from "vite";
 import { simpleFederationRemotePlugin } from "simple-module-federation";
 
+const externals = [
+  "react",
+  "react-dom",
+  "react/jsx-runtime",
+  "react-router-dom",
+  "shared/config",
+];
+
 export default defineConfig({
   plugins: [],
   server: {
@@ -11,16 +19,20 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: { config: "src/config.tsx" },
+      entry: { Test: "src/Test.tsx" },
       name: "Remote",
       formats: ["es"],
-      fileName: (format, alias) => `${alias}.${format}.js`,
+      fileName: (format) => `Test.${format}.js`,
     },
     minify: true,
     sourcemap: true,
     rollupOptions: {
-      plugins: [],
-      external: ["react", "react/jsx-runtime", "react-dom"],
+      plugins: [
+        simpleFederationRemotePlugin({
+          sharedDependencies: externals,
+        }),
+      ],
+      external: externals,
     },
   },
 });

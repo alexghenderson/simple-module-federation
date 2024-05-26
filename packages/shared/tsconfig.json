@@ -2,8 +2,11 @@
   "extends": "@tsconfig/vite-react/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "declaration": true,
+    "allowImportingTsExtensions": false,
     "paths": {
       "src/*": ["src/*"]
     }
-  }
+  },
+  "include": ["rollup.config.js", "src/**/*.ts", "src/**/*.tsx"]
 }

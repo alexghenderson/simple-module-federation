@@ -1,8 +1,15 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { ConfigProvider } from "shared/config";
+import { config } from "./config";
 
-const Test = React.lazy(() => import("http://localhost:5001/Test.es.js"));
+const Test = React.lazy(
+  () => import(/* @vite-ignore */ `${config.remoteModules}/Test.es.js`),
+);
+
+interface Config {
+  remote: string;
+}
 
 const Local = () => (
   <div>
@@ -12,7 +19,7 @@ const Local = () => (
 
 export const App = () => {
   return (
-    <ConfigProvider config={{}}>
+    <ConfigProvider<Config> config={config}>
       <React.Suspense fallback={<div>Loading...</div>}>
         <BrowserRouter>
           <Routes>

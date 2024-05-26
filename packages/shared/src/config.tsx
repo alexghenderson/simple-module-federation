@@ -1,12 +1,14 @@
 import React from "react";
 
-export const ConfigContext = React.createContext<Record<string, string>>({});
+type BaseConfigType = object;
 
-interface ConfigProviderProps<T extends Record<string, string>> {
+export const ConfigContext = React.createContext<BaseConfigType>({});
+
+interface ConfigProviderProps<T extends BaseConfigType> {
   config: T;
 }
 
-export function ConfigProvider<T extends Record<string, string>>(
+export function ConfigProvider<T extends BaseConfigType>(
   props: React.PropsWithChildren<ConfigProviderProps<T>>,
 ) {
   const { config } = props;
@@ -18,6 +20,6 @@ export function ConfigProvider<T extends Record<string, string>>(
   );
 }
 
-export function useConfig<T extends Record<string, string>>(): T {
+export function useConfig<T extends BaseConfigType>(): T {
   return React.useContext(ConfigContext) as T;
 }
